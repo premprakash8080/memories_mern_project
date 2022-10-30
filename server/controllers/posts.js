@@ -1,3 +1,17 @@
-export const getPosts = (req , res) =>{
-    res.send('this works!')
+import PostMessage from "../models/postMessage";
+
+export const getPosts = async (req , res) =>{
+   try {
+     
+    const PostMessage = await PostMessage.find();
+    
+    res.status(200).json(postMessage);
+
+   } catch (error) {
+    res.status(404).json({message:error.message});
+   }
+}
+
+export const createPost = (req, res )=>{
+    res.send('post creation');
 }
